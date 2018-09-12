@@ -1,38 +1,40 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Configures zabbix agent for windows using chocolatey packages
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+dnspython module for the ansible controller.
+install with "pip install dnspython"
 
 Role Variables
 --------------
+zabbix_server: dns name of zabbix server. Inherited from global scope.
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+zbx_agent_configpath: used to specify the zabbix_agentd.conf file location.
+zbx_agent_logpath: used to specify the zabbix_agent.log file location.
+zabbix_server_ip: uses the dig lookup to get the ip of zabbix_server for creating firewall rules.
 
 Dependencies
 ------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
 
 Example Playbook
 ----------------
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
+    - hosts: windows_servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: zabbix-agent-win, zabbix_server: zabbix }
 
 License
 -------
 
-BSD
+GPLv3
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Jeff Hibberd
