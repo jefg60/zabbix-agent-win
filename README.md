@@ -1,4 +1,4 @@
-Role Name
+zabbix-agent-win
 =========
 
 Configures zabbix agent for windows using chocolatey packages
