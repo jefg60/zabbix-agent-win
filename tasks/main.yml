@@ -31,4 +31,4 @@
     state: present
     enabled: yes
     profiles: private
-    remoteip: {{ zabbix_server }}
+    remoteip: "{{ zabbix_server }}"
