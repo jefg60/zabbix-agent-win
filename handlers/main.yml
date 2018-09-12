@@ -1,2 +1,7 @@
 ---
 # handlers file for zabbix-agent-win
+
+- name: restart zabbix agent
+  win_service:
+    name: "Zabbix Agent"
+    state: restarted
