@@ -14,4 +14,5 @@
   win_template:
     src: zabbix_agentd.conf.j2
     dest: "{{ zbx_agent_configpath }}\\zabbix\\zabbix_agentd.conf"
-    notify: restart zabbix agent
+  notify:
+    - restart zabbix agent
