@@ -10,9 +10,25 @@
     var: "zbx_agent_configpath"
     verbosity: 1
 
+- debug:
+    var: "zbx_agent_logpath"
+    verbosity: 1
+
 - name: update zabbix agent conf file
   win_template:
     src: zabbix_agentd.conf.j2
     dest: "{{ zbx_agent_configpath }}"
   notify:
     - restart zabbix agent
+
+- name: create firewall rule for zabbix agent
+  win_firewall_rule:
+    name: Zabbix Agent
+    localport: 10050
+    action: allow
+    direction: in
+    protocol: tcp
+    state: present
+    enabled: yes
+    profiles: private
+    remoteip: {{ zabbix_server }}
