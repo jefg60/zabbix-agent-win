@@ -1,2 +1,16 @@
 ---
 # tasks file for zabbix-agent-win
+#
+- name: Install zabbix-agent
+  win_chocolatey:
+    name: zabbix-agent
+    state: present
+
+- debug:
+    var: "zbx_agent_configpath"
+    verbosity: 1
+
+- name: update zabbix agent conf file
+    win_template:
+      src: zabbix_agentd.conf.j2
+      dest: "{{ zbx-agent-configpath }}/zabbix/zabbix_agentd.conf"

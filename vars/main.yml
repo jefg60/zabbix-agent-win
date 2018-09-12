@@ -1,2 +1,3 @@
 ---
 # vars file for zabbix-agent-win
+zbx_agent_configpath: "{{ ansible_env.ALLUSERSPROFILE }}"
