@@ -1,2 +1,3 @@
 ---
 # defaults file for zabbix-agent-win
+zbx_win_agent_timeout: 3
