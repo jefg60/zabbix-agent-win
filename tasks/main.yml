@@ -1,11 +1,22 @@
 ---
 # tasks file for zabbix-agent-win
 #
+#At time of writing latest choco version of agent is 4.0.0
+#which works but does not play nicely with older servers
+#if you want to pin the version set the var zabbix_agent_version
+#to a string like '3.4.6'
 - name: Install zabbix-agent
   win_chocolatey:
     name: zabbix-agent
     state: present
-    version: 3.4.6
+    version: '{{ zabbix_agent_version }}'
+  when: zabbix_agent_version is defined
+
+- name: Install latest zabbix-agent
+  win_chocolatey:
+    name: zabbix-agent
+    state: latest
+  when: zabbix_agent_version is not defined
 
 - debug:
     var: "zbx_agent_configpath"
