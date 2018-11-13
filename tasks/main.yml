@@ -5,6 +5,7 @@
   win_chocolatey:
     name: zabbix-agent
     state: present
+    version: 3.4.6
 
 - debug:
     var: "zbx_agent_configpath"
