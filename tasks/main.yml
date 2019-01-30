@@ -8,7 +8,7 @@
 - name: Install zabbix-agent
   win_chocolatey:
     name: zabbix-agent
-    state: present
+    state: latest
     version: '{{ zabbix_agent_version }}'
   when: zabbix_agent_version is defined
 
